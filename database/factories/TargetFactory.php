@@ -12,7 +12,7 @@ class TargetFactory extends Factory
     public function definition(): array
     {
         return [
-            'remote_id'  => $this->faker->randomDigit(),
+            'remote_id'  => rand(0, 100),
             'project_id' => Project::factory(),
             'name'       => $this->faker->name(),
             'email'      => $this->faker->unique()->safeEmail(),
