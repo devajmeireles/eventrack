@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
             ->for($project)
             ->create();
 
-        Event::factory(10)
+        Event::factory(50)
             ->for($project)
             ->for($target)
             ->create();

@@ -14,37 +14,6 @@
                     <x-card symbol="heroicon-s-banknotes" :value="123" title="AJ" :percentage="10.5" up/>
                 </dl>
             </div>
-            <br>
-            <x-table>
-                <x-table.thread>
-                    <x-table.tr>
-                        <x-table.th label="Name"/>
-                        <x-table.th label="Title"/>
-                        <x-table.th label="Email"/>
-                        <x-table.th label="Role"/>
-                        <x-table.th label="Edit"/>
-                    </x-table.tr>
-                </x-table.thread>
-                <x-table.tbody>
-                    <x-table.tr>
-                        <x-table.td>
-                            Lindsay Walton
-                        </x-table.td>
-                        <x-table.td>
-                            Front-end Developer
-                        </x-table.td>
-                        <x-table.td>
-                            lindsay.walton@example.com
-                        </x-table.td>
-                        <x-table.td>
-                            Member
-                        </x-table.td>
-                        <x-table.td>
-                            Edit, Lindsay Walton
-                        </x-table.td>
-                    </x-table.tr>
-                </x-table.tbody>
-            </x-table>
         </div>
 
     </div>
