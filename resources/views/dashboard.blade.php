@@ -15,6 +15,5 @@
                 </dl>
             </div>
         </div>
-
     </div>
 </x-app-layout>
