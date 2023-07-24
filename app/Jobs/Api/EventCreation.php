@@ -2,11 +2,12 @@
 
 namespace App\Jobs\Api;
 
-use App\Models\{Project};
+use App\Models\{Event, Project};
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\{ShouldQueue};
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\{InteractsWithQueue, SerializesModels};
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Cache;
 
 class EventCreation implements ShouldQueue
@@ -31,14 +32,12 @@ class EventCreation implements ShouldQueue
         $target = $project->targets()->firstOrCreate([
             'email' => $target['email'],
         ], [
-            'project_id' => $project->id,
-            ...collect($target)->except('id')->toArray(),
+            ...Arr::except($target, 'id'),
         ]);
 
-        $target->events()->create([
-            'project_id' => $project->id,
-            'name'       => $this->data['event'],
-            'payload'    => $this->data['payload'],
-        ]);
+        Event::make([...$this->data['event']])
+            ->project()->associate($project)
+            ->target()->associate($target)
+            ->save();
     }
 }

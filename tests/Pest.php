@@ -1,6 +1,11 @@
 <?php
 
+use App\Models\{Project, User};
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+
+use function Pest\Laravel\actingAs;
+
 use Tests\TestCase;
 
 /*
@@ -42,7 +47,21 @@ expect()->extend('toBeOne', function () {
 |
 */
 
-function something()
+function createTestUser(array $attributes = [], bool $login = true): User
 {
-    // ..
+    $user = User::factory()->create($attributes);
+
+    if ($login) {
+        actingAs($user);
+    }
+
+    return $user;
+}
+
+function createTestProject(array $attributes = [], ?User $user = null): Project
+{
+    return Project::factory()
+        ->when($user, fn (Factory $query) => $query->for($user))
+        ->unless($user, fn (Factory $query) => $query->for(createTestUser(login: false)))
+        ->create($attributes);
 }

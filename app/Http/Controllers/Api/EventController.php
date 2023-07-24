@@ -11,9 +11,7 @@ class EventController extends Controller
 {
     public function __invoke(EventCreationRequest $request): Response
     {
-        $token = $request->get('token');
-
-        EventCreation::dispatch($token, $request->validated());
+        EventCreation::dispatch($request->get('token'), $request->validated());
 
         return response()->noContent();
     }

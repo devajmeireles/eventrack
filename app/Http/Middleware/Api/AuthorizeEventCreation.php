@@ -16,9 +16,7 @@ class AuthorizeEventCreation
 
         abort_if(!$token, Response::HTTP_FORBIDDEN, 'No project token provided.');
 
-        $project = Project::find($token);
-
-        abort_if(!$project, Response::HTTP_UNAUTHORIZED, 'Invalid project token.');
+        abort_if(!($project = Project::find($token)), Response::HTTP_UNAUTHORIZED, 'Invalid project token.');
 
         Cache::put("event::creation::{$token}", $project);
 

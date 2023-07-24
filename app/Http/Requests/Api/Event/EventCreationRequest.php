@@ -9,9 +9,8 @@ class EventCreationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'event'   => ['required', 'string', 'max:255'],
-            'payload' => ['required', 'array'],
-            'target'  => ['required', 'array'],
+            'event'  => ['required', 'array'],
+            'target' => ['required', 'array'],
         ];
     }
 }

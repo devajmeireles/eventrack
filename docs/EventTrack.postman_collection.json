@@ -1,0 +1,66 @@
+{
+	"info": {
+		"_postman_id": "14f9933c-e99d-4c4d-9521-efab27c13e84",
+		"name": "EventTrack",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10802248"
+	},
+	"item": [
+		{
+			"name": "Events",
+			"item": [
+				{
+					"name": "Create Event",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{EVENT_TRACK_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"event\": {\n        \"name\": \"InvoiceCreation\",\n        \"payload\": {\n            \"id\": 1234,\n            \"value\": 99.0,\n            \"plan\": \"Premium\"\n        }\n    },\n    \"target\": {\n        \"id\": 1122,\n        \"name\": \"Jhon Doe\",\n        \"email\": \"jhon.doe@gmail.com\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://eventrack.test/api/events/create",
+							"protocol": "http",
+							"host": [
+								"eventrack",
+								"test"
+							],
+							"path": [
+								"api",
+								"events",
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
