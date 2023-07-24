@@ -13,6 +13,12 @@ class Event extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'project_id',
+        'name',
+        'payload',
+    ];
+
     protected $casts = [
         'payload' => 'json',
     ];

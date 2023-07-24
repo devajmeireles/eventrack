@@ -13,6 +13,13 @@ class Target extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'remote_id',
+        'project_id',
+        'name',
+        'email',
+    ];
+
     protected $casts = [
         'properties' => 'json',
     ];
