@@ -24,6 +24,11 @@ class Target extends Model
         'properties' => 'json',
     ];
 
+    public function getRouteKeyName(): string
+    {
+        return 'remote_id';
+    }
+
     public function project(): BelongsTo
     {
         return $this->belongsTo(Project::class);

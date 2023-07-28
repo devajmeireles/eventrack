@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\EventController;
+use App\Http\Controllers\Api\TargetController;
 use App\Http\Middleware\Api\AuthorizeEventCreation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -23,3 +24,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/events/create', EventController::class)
     ->middleware(AuthorizeEventCreation::class)
     ->name('api.events.create');
+
+Route::apiResource('/targets', TargetController::class)
+    ->only(['update', 'destroy']);
